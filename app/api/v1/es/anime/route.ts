@@ -1,15 +1,34 @@
-import connect from '@/lib/db';
-import Anime from '@/lib/models/anime';
-import { NextResponse } from 'next/server';
-import { Types } from 'mongoose';
-const ObjectId = require('mongoose').Types.ObjectId; //esto revisa si el objeto es valido
-export const GET = async () => {
+import connect from "@/lib/db";
+import Anime from "@/lib/models/anime";
+import { NextResponse } from "next/server";
+import { Types } from "mongoose";
+const ObjectId = require("mongoose").Types.ObjectId; //esto revisa si el objeto es valido
+export const GET = async (request: Request) => {
   try {
+    const { searchParams } = new URL(request.url);
+    const searchKeywords = searchParams.get("keywords") as string;
+    const page: any = parseInt(searchParams.get("page") || "1");
+    const limit: any = parseInt(searchParams.get("limit") || "10");
     await connect();
-    const Animes = await Anime.find();
+    const filter: any = {};
+    if (searchKeywords) {
+      filter.$or = [
+        //esto es una opcion de mongoose
+        {
+          "titles.originalTitle": { $regex: searchKeywords, $options: "i" },
+        },
+        { season: { $regex: searchKeywords, $options: "i" } },
+        { voiceActors: { $regex: searchKeywords, $options: "i" } },
+      ];
+    }
+    const skip = (page - 1) * limit;
+    const Animes = await Anime.find(filter)
+      .sort({ createdAt: "asc" })
+      .skip(skip)
+      .limit(limit);
     return new NextResponse(JSON.stringify(Animes), { status: 200 });
   } catch (error: any) {
-    return new NextResponse('Error in fetching Animes' + error.message, {
+    return new NextResponse("Error in fetching Animes" + error.message, {
       status: 500,
     });
   }
@@ -23,11 +42,11 @@ export const POST = async (request: Request) => {
     await newAnime.save();
 
     return new NextResponse(
-      JSON.stringify({ message: 'Anime is created', Anime: newAnime }),
+      JSON.stringify({ message: "Anime is created", Anime: newAnime }),
       { status: 200 }
     );
   } catch (error: any) {
-    return new NextResponse('Error in creating Anime' + error.message, {
+    return new NextResponse("Error in creating Anime" + error.message, {
       status: 500,
     });
   }
@@ -36,41 +55,41 @@ export const POST = async (request: Request) => {
 export const PATCH = async (request: Request) => {
   try {
     const body = await request.json();
-    const { AnimeId, newAnimename } = body;
+    const { animeId, newAnimename } = body;
 
     await connect();
-    if (!AnimeId || !newAnimename) {
+    if (!animeId || !newAnimename) {
       return new NextResponse(
-        JSON.stringify({ message: 'ID or new Animename not found' }),
+        JSON.stringify({ message: "ID or new Anime name not found" }),
         { status: 400 }
       );
     }
 
-    if (!Types.ObjectId.isValid(AnimeId)) {
-      return new NextResponse(JSON.stringify({ message: 'Invalid Anime id' }), {
+    if (!Types.ObjectId.isValid(animeId)) {
+      return new NextResponse(JSON.stringify({ message: "Invalid Anime id" }), {
         status: 400,
       });
     }
 
     const updatedAnime = await Anime.findOneAndUpdate(
-      { _id: new ObjectId(AnimeId) },
+      { _id: new ObjectId(animeId) },
       { Animename: newAnimename },
       { new: true }
     );
 
     if (!updatedAnime) {
       return new NextResponse(
-        JSON.stringify({ message: 'Anime not found in the database' }),
+        JSON.stringify({ message: "Anime not found in the database" }),
         { status: 400 }
       );
     }
 
     return new NextResponse(
-      JSON.stringify({ message: 'Anime is updated', Anime: updatedAnime }),
+      JSON.stringify({ message: "Anime is updated", Anime: updatedAnime }),
       { status: 200 }
     );
   } catch (error: any) {
-    return new NextResponse('Error in updating Anime' + error.message, {
+    return new NextResponse("Error in updating Anime" + error.message, {
       status: 500,
     });
   }
@@ -79,16 +98,16 @@ export const PATCH = async (request: Request) => {
 export const DELETE = async (request: Request) => {
   try {
     const { searchParams } = new URL(request.url);
-    const AnimeId = searchParams.get('AnimeId');
+    const animeId = searchParams.get("animeId");
 
-    if (!AnimeId) {
-      return new NextResponse(JSON.stringify({ message: 'ID not found' }), {
+    if (!animeId) {
+      return new NextResponse(JSON.stringify({ message: "ID not found" }), {
         status: 400,
       });
     }
 
-    if (!Types.ObjectId.isValid(AnimeId)) {
-      return new NextResponse(JSON.stringify({ message: 'Invalid Anime id' }), {
+    if (!Types.ObjectId.isValid(animeId)) {
+      return new NextResponse(JSON.stringify({ message: "Invalid Anime id" }), {
         status: 400,
       });
     }
@@ -96,22 +115,22 @@ export const DELETE = async (request: Request) => {
     await connect();
 
     const deletedAnime = await Anime.findByIdAndDelete(
-      new Types.ObjectId(AnimeId)
+      new Types.ObjectId(animeId)
     );
 
     if (!deletedAnime) {
       return new NextResponse(
-        JSON.stringify({ message: 'Anime not found in the database' }),
+        JSON.stringify({ message: "Anime not found in the database" }),
         { status: 400 }
       );
     }
 
     return new NextResponse(
-      JSON.stringify({ message: 'Anime is deleted', Anime: deletedAnime }),
+      JSON.stringify({ message: "Anime is deleted", Anime: deletedAnime }),
       { status: 200 }
     );
   } catch (error: any) {
-    return new NextResponse('Error in deleting Anime' + error.message, {
+    return new NextResponse("Error is deleting Anime" + error.message, {
       status: 500,
     });
   }
