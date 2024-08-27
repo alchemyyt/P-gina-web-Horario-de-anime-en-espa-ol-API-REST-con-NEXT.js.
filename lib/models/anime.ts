@@ -1,6 +1,6 @@
 import { Schema, model, models } from "mongoose";
 const AnimeSchema = new Schema({
-  image: {
+  images: {
     verticalImage: String,
     horizontalImage: String,
   },
@@ -12,7 +12,7 @@ const AnimeSchema = new Schema({
   synopsis: String,
   airing: Boolean,
   season: String,
-  duration: String,
+  duration: Number,
   year: Number,
   broadcast: {
     day: String,
@@ -24,9 +24,9 @@ const AnimeSchema = new Schema({
   },
   genres: [{ genreName: String, genreUrl: String }],
   studios: [{ studioName: String, studioUrl: String }],
-  streamingServices: [{ siteName: String, animeUrl: String }],
+  streamingService: { siteName: String, animeUrl: String, siteIcon: String },
   doblajeWikiUrl: String,
-  voiceActors: [{ voiceActorName: String, wikiUrl: String }],
+  voiceActors: [{ voiceActorName: String, wikiUrl: String, character: String }],
 });
 const Anime = models.Anime || model("Anime", AnimeSchema);
 export default Anime;
