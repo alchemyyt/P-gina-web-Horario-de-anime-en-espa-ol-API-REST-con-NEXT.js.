@@ -5,15 +5,22 @@ export const createAnime = async (formData) => {
   const stringToJson = (string) => {
     return JSON.parse(string);
   };
+  const currentUrl = process.env.NEXT_PUBLIC_VERCEL_URL;
   let airing = formData.get("airing");
   const genres = formData.get("genres");
   const studios = formData.get("studios");
   const voiceActors = formData.get("voiceActors");
+  const password = formData.get("password");
   if (airing === "on") {
     airing = true;
   } else {
     airing = false;
   }
+  const postHeader = {
+    headers: {
+      authorization: `Bearer ${password}`,
+    },
+  };
   const newAnime = {
     images: {
       verticalImage: formData.get("verticalImage"),
@@ -49,8 +56,10 @@ export const createAnime = async (formData) => {
   };
   try {
     const response = await axios.post(
-      "http://localhost:3001/api/v1/es/anime",
-      newAnime
+      "http://localhost:3000/api/v1/es/anime" ||
+        `https://${currentUrl}/api/v1/anime`,
+      newAnime,
+      postHeader
     );
     return response.status; // para poder retornar directo tuve que hacer un try catch con .then no retornaba
   } catch (error) {

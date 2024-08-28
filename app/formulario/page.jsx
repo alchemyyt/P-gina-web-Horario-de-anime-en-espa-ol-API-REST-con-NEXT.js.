@@ -4,7 +4,9 @@ import { toast } from "sonner";
 const page = () => {
   return (
     <main>
-      <h1>Formulario del API REST de Anime En Español</h1>
+      <h1 className="p-6 text-center bg-amber-200 border-amber-600 border-2">
+        Formulario del API REST de Anime En Español
+      </h1>
       <form
         action={async (formData) => {
           try {
@@ -19,6 +21,10 @@ const page = () => {
           }
         }}
       >
+        <label className="">
+          <div className="">Contraseña</div>
+          <input type="text" name="password" placeholder="Password" />
+        </label>
         <label className="">
           <div className="">Imagenes</div>
           <input
