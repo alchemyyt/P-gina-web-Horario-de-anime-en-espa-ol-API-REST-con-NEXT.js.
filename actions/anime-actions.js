@@ -5,12 +5,16 @@ export const createAnime = async (formData) => {
   const stringToJson = (string) => {
     return JSON.parse(string);
   };
+  const stringToArray = (string) => {
+    let miArray = string.split(" ");
+    return miArray;
+  };
   const currentUrl = process.env.NEXT_PUBLIC_VERCEL_URL;
   let airing = formData.get("airing");
   const genres = formData.get("genres");
-  const studios = formData.get("studios");
   const voiceActors = formData.get("voiceActors");
   const password = formData.get("password");
+
   if (airing === "on") {
     airing = true;
   } else {
@@ -42,10 +46,10 @@ export const createAnime = async (formData) => {
       co: formData.get("co"),
       ve: formData.get("ve"),
       ar: formData.get("ar"),
-      es: formData.get("mx"),
+      es: formData.get("es"),
     },
-    genres: stringToJson(genres),
-    studios: stringToJson(studios),
+    genres: stringToArray(genres),
+    studio: formData.get("studio"),
     streamingService: {
       siteName: formData.get("siteName"),
       animeUrl: formData.get("animeUrl"),

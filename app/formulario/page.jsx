@@ -3,7 +3,7 @@ import { createAnime } from "../../actions/anime-actions";
 import { toast } from "sonner";
 const page = () => {
   return (
-    <main>
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <h1 className="p-6 text-center bg-amber-200 border-amber-600 border-2">
         Formulario del API REST de Anime En Español
       </h1>
@@ -30,36 +30,19 @@ const page = () => {
           <input
             type="text"
             name="verticalImage"
-            placeholder="Vertical"
-            defaultValue="verticalImage.com"
+            placeholder="verticalImageUrl"
           />
           <input
             type="text"
             name="horizontalImage"
-            placeholder="Horizontal"
-            defaultValue="horizontalImage.com"
+            placeholder="horizontalImageUrl"
           />
         </label>
         <label className="">
           <div className="">Titulos</div>
-          <input
-            type="text"
-            name="originalTitle"
-            placeholder="Japones"
-            defaultValue="Titulo en japones"
-          />
-          <input
-            type="text"
-            name="enTitle"
-            placeholder="Ingles"
-            defaultValue="Titulo en ingles"
-          />
-          <input
-            type="text"
-            name="esTitle"
-            placeholder="Español"
-            defaultValue="Titulo en español"
-          />
+          <input type="text" name="originalTitle" placeholder="Japones" />
+          <input type="text" name="enTitle" placeholder="Ingles" />
+          <input type="text" name="esTitle" placeholder="Español" />
         </label>
         <label className="">
           <div className="">Sipnopsis</div>
@@ -67,7 +50,6 @@ const page = () => {
             type="text"
             name="synopsis"
             placeholder="Sipnopsis"
-            defaultValue="Argumento del anime"
             className="w-full h-24"
           />
         </label>
@@ -82,7 +64,7 @@ const page = () => {
         </label>
         <label className="">
           <div className="">Temporada</div>
-          <select name="season">
+          <select name="season" defaultValue={"summer"}>
             <option defaultValue="winter">winter</option>
             <option defaultValue="spring">spring</option>
             <option defaultValue="summer">summer</option>
@@ -134,19 +116,17 @@ const page = () => {
           <input
             type="text"
             name="genres"
-            placeholder="genres"
+            placeholder="elemento1 elemento2 elemento3"
             className="w-full h-24"
-            defaultValue={`[{"genreName": "accion", "genreUrl": "yrl"},{"genreName": "romance", "genreUrl": "yrl"}]`}
           />
         </label>
         <label className="">
-          <div className="">Studios</div>
+          <div className="">Studio</div>
           <input
             type="text"
-            name="studios"
-            placeholder="studios"
+            name="studio"
+            placeholder="studio"
             className="w-full h-24"
-            defaultValue={`[{ "studioName": "toei", "studioUrl": "url" },{ "studioName": "toei", "studioUrl": "url" }]`}
           />
         </label>
         <label className="">
@@ -161,7 +141,6 @@ const page = () => {
             type="text"
             name="animeUrl"
             placeholder="https://www.crunchyroll.com/"
-            defaultValue="https://www.crunchyroll.com/"
           />
           <input
             type="text"
@@ -172,12 +151,7 @@ const page = () => {
         </label>
         <label className="">
           <div className="">Wiki url</div>
-          <input
-            type="text"
-            name="doblajeWikiUrl"
-            placeholder="wiki url"
-            defaultValue="https://doblaje.fandom.com/es/wiki/Alya_Sometimes_Hides_Her_Feelings_in_Russian"
-          />
+          <input type="text" name="doblajeWikiUrl" placeholder="wiki url" />
         </label>
         <label className="">
           <div className="">Actores de voz</div>
