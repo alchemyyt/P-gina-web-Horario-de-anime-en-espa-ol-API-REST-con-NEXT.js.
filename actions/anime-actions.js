@@ -60,8 +60,7 @@ export const createAnime = async (formData) => {
   };
   try {
     const response = await axios.post(
-      "http://localhost:3000/api/v1/es/anime" ||
-        `https://${currentUrl}/api/v1/anime`,
+      "https://horario-de-anime-en-castellano.vercel.app/api/v1/es/anime",
       newAnime,
       postHeader
     );
