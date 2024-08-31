@@ -7,7 +7,7 @@ export const getData = async (endpoint) => {
       },
     };
     const response = await axios.get(
-      `http://localhost:3000/api/v1/${endpoint}`,
+      `https://horario-de-anime-en-castellano.vercel.app/api/v1/${endpoint}`,
       postHeader
     );
     return response.data; // para poder retornar directo tuve que hacer un try catch con .then no retornaba
