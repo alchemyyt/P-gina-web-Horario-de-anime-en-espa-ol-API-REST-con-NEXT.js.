@@ -18,12 +18,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} `}>
         <div className=''>
           <NavegationMobile/>
           <NavegationDesktop/>
         </div>
-        {children}</body>
+        {children}
+      </body>
       <Toaster/>
     </html>
   );
