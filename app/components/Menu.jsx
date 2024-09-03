@@ -5,19 +5,19 @@ export default function Menu() {
     <nav className="flex flex-col lg:flex-row ">
       <Link
         href="./animes"
-        className="ml-6 text-xl font-bold hover:text-amber-950 duration-300 "
+        className="lg:ml-6 text-xl font-bold hover:text-amber-950 duration-300 "
       >
         Animes
       </Link>
       <Link
         href="./temporadas"
-        className="ml-6 text-xl font-bold hover:text-amber-950 duration-300 "
+        className="lg:ml-6 text-xl font-bold hover:text-amber-950 duration-300 "
       >
         Temporadas
       </Link>
       <Link
         href="./estrenos"
-        className="ml-6 text-xl font-bold hover:text-amber-950 duration-300 "
+        className="lg:ml-6 text-xl font-bold hover:text-amber-950 duration-300 "
       >
         Estrenos
       </Link>

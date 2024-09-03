@@ -23,7 +23,7 @@ const AnimeSchema = new Schema({
     es: String,
   },
   genres: [String],
-  studios: String,
+  studio: String,
   streamingService: { siteName: String, animeUrl: String, siteIcon: String },
   doblajeWikiUrl: String,
   voiceActors: [{ voiceActorName: String, wikiUrl: String, character: String }],
