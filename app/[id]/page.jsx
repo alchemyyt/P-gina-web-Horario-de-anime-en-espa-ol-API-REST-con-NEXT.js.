@@ -193,8 +193,8 @@ export default async function Page({ params }) {
               Generos
             </h2>
           </li>
-          {animeData.genres.map((element, index) => (
-            <li key={index}>
+          {animeData.genres.map((element) => (
+            <li key={element._id}>
               <Link
                 href={`./generos/${element}`}
                 className="text-amber-500 hover:text-amber-700 scale-100 transition-all duration-300 hover:scale-105"
@@ -221,13 +221,13 @@ export default async function Page({ params }) {
             Actores de doblaje
           </h2>
           <ul>
-            {animeData.voiceActors.map((element, index) => (
-              <li>
+            {animeData.voiceActors.map((element) => (
+              <li key={element._id}>
                 {element.character}:
                 <Link
                   href={element.wikiUrl}
                   className="text-amber-500 hover:text-amber-700 scale-100 transition-all duration-300 hover:scale-105"
-                  key={index}
+                  key={element._id}
                 >
                   {` ${element.voiceActorName} `}
                 </Link>
