@@ -7,7 +7,6 @@ export const getData = async (endpoint) => {
       },
     };
     const response = await axios.get(
-      `http://localhost:3000/api/v1/${endpoint}` ||
         `https://horario-de-anime-en-castellano.vercel.app/api/v1/${endpoint}`,
         header
     );
