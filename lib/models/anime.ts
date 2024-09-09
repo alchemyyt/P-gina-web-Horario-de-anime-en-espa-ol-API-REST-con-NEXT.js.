@@ -30,15 +30,3 @@ const AnimeSchema = new Schema({
 });
 const Anime = models.Anime || model("Anime", AnimeSchema);
 export default Anime;
-/*const AnimeSchema = new Schema({
-  title: String,
-  author: String,
-  body: String,
-  comments: [{ body: String, date: Date }],
-  date: { type: Date, default: Date.now },
-  hidden: Boolean,
-  image: {
-    vertical: String,
-    horizontal: String,
-  },
-}); */

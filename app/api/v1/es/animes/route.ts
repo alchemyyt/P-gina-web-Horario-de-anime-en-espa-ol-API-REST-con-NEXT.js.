@@ -7,18 +7,16 @@ export const GET = async (request: Request) => {
   try {
     const { searchParams } = new URL(request.url);
     const searchKeywords = searchParams.get("keywords") as string;
+
     const page: any = parseInt(searchParams.get("page") || "1");
     const limit: any = parseInt(searchParams.get("limit") || "10");
     await connect();
-    const filter: any = {};
+    const filter: any = {
+    };
     if (searchKeywords) {
       filter.$or = [
         //esto es una opcion de mongoose
-        {
-          "titles.originalTitle": { $regex: searchKeywords, $options: "i" },
-        },
-        { season: { $regex: searchKeywords, $options: "i" } },
-        { voiceActors: { $regex: searchKeywords, $options: "i" } },
+        { season: { $regex: searchKeywords, $options: "i" }},
       ];
     }
     const skip = (page - 1) * limit;
@@ -26,7 +24,10 @@ export const GET = async (request: Request) => {
       .sort({ createdAt: "asc" })
       .skip(skip)
       .limit(limit);
-    return new NextResponse(JSON.stringify(Animes), { status: 200 });
+      const totalAnimes = await Anime.countDocuments(filter);
+      const totalPages = Math.ceil(totalAnimes / limit);
+      
+    return new NextResponse(JSON.stringify({Animes,limit,totalPages,totalAnimes}), { status: 200 });
   } catch (error: any) {
     return new NextResponse("Error in fetching Animes" + error.message, {
       status: 500,

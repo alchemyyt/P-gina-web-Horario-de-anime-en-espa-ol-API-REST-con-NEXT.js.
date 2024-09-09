@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { authMiddleware } from "./middlewares/api/authMiddleware";
 import { logMiddleware } from "./middlewares/api/logMiddleware";
-import { getToken } from "next-auth/jwt";
 export const config = {
   matcher: ["/api/:path*"],
 };

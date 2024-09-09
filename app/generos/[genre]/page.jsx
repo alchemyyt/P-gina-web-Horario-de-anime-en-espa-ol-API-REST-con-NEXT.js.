@@ -1,18 +1,17 @@
 import React from "react";
-import { getData } from "../services/getData";
 import Link from "next/link";
-export default async function AnimeCard(props) {
-  const dayData = await getData(props.endPoint);
+import { getData } from "../../services/getData";
+export default async function Page({ params }) {
+  const { genre } = params;
+  const animeData = await getData(`es/animes/genres/${genre}`);
   return (
-    <div>
-      <h2 className="text-center font-bold text-2xl lg:mt-6 px-2 bg-slate-200 border-2 border-gray-400 my-6 ">
-        {props.title}
-      </h2>
-      <ul className=" flex overflow-x-scroll gap-1 lg:flex-row lg:flex-wrap lg:justify-center lg:overflow-auto bg-slate-100 ">
-        {dayData.map((element) => (
+    <main className="flex flex-col aling-center text-center min-h-screen lg:w-11/12 lg:mx-auto  lg:px-6">
+      <h2 className="text-2xl font-bold">{genre}</h2>
+      <ul className=" flex flex-wrap justify-center gap-1  bg-slate-100 h-min">
+        {animeData.map((element) => (
           <Link
             key={element._id}
-            href={element._id}
+            href={`../${element._id}`}
             className=" relative rounded-lg m-2"
           >
             <figure
@@ -31,6 +30,6 @@ export default async function AnimeCard(props) {
           </Link>
         ))}
       </ul>
-    </div>
+    </main>
   );
 }

@@ -1,15 +1,18 @@
 import React from "react";
 import { getData } from "../services/getData";
 import Link from "next/link";
-export default async function AnimeCard(props) {
-  const dayData = await getData(props.endPoint);
+export default async function page() {
+  const seasonData = await getData("es/animes/seasons/summer?year=2024");
+
   return (
-    <div>
-      <h2 className="text-center font-bold text-2xl lg:mt-6 px-2 bg-slate-200 border-2 border-gray-400 my-6 ">
-        {props.title}
-      </h2>
-      <ul className=" flex overflow-x-scroll gap-1 lg:flex-row lg:flex-wrap lg:justify-center lg:overflow-auto bg-slate-100 ">
-        {dayData.map((element) => (
+    <main>
+      <Link href="./temporadas/summer-2024" className="text-amber-700">
+        <h2 className="text-center font-bold text-2xl lg:mt-6 px-2 bg-slate-200 border-2 border-gray-400 my-6 ">
+          Verano 2024
+        </h2>
+      </Link>
+      <ul className=" flex overflow-x-scroll gap-1  bg-slate-100 h-min">
+        {seasonData.map((element) => (
           <Link
             key={element._id}
             href={element._id}
@@ -31,6 +34,6 @@ export default async function AnimeCard(props) {
           </Link>
         ))}
       </ul>
-    </div>
+    </main>
   );
 }

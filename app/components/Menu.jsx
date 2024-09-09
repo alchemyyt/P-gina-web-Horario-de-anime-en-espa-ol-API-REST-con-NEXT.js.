@@ -16,10 +16,10 @@ export default function Menu() {
         Temporadas
       </Link>
       <Link
-        href="./estrenos"
+        href="./generos"
         className="lg:ml-6 text-xl font-bold hover:text-amber-950 duration-300 "
       >
-        Estrenos
+        Generos
       </Link>
     </nav>
   );
