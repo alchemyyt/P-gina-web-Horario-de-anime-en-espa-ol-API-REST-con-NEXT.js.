@@ -1,13 +1,15 @@
 import axios from "axios";
 export const getData = async (endpoint) => {
+
   try {
+  const password = process.env.PASSWORD;
     const header = {
       headers: {
-        authorization: `Bearer ${process.env.PASSWORD}`,
+        authorization: `Bearer ${password}`,
       },
     };
     const response = await axios.get(
-        `https://horario-de-anime-en-castellano.vercel.app/api/v1/${endpoint}`,
+        `http://localhost:3000/api/v1/${endpoint}`,
         header
     );
     return response.data; // para poder retornar directo tuve que hacer un try catch con .then no retornaba

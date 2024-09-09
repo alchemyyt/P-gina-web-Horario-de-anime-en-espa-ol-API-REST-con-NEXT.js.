@@ -9,7 +9,6 @@ export const createAnime = async (formData) => {
     let miArray = string.split(" ");
     return miArray;
   };
-  const currentUrl = process.env.NEXT_PUBLIC_VERCEL_URL;
   let airing = formData.get("airing");
   const genres = formData.get("genres");
   const voiceActors = formData.get("voiceActors");
@@ -60,7 +59,7 @@ export const createAnime = async (formData) => {
   };
   try {
     const response = await axios.post(
-        `https://horario-de-anime-en-castellano.vercel.app/api/v1/es/animes`,
+        `http://localhost:3000/api/v1/es/animes`,
       newAnime,
       postHeader
     );
