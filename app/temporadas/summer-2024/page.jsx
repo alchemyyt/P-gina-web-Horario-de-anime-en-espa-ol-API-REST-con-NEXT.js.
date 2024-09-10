@@ -3,8 +3,6 @@ import { getData } from "../../services/getData";
 import Link from "next/link";
 export default async function page() {
   const seasonData = await getData("es/animes/seasons/summer?year=2024");
-  console.log(seasonData);
-
   return (
     <main>
       <h2 className="text-center font-bold text-2xl  ">Verano 2024</h2>
