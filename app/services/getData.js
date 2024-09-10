@@ -6,8 +6,6 @@ export const getData = async (endpoint) => {
         authorization: `Bearer ${process.env.PASSWORD}`,
       },
     };
-    console.log(postHeader);
-    
     const response = await axios.get(
       `https://horario-de-anime-en-castellano.vercel.app/api/v1/${endpoint}`,
       postHeader
