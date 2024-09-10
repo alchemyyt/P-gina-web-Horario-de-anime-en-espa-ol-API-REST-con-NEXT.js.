@@ -11,7 +11,7 @@ export default function Page() {
     const fetchData = async () => {
       const header = {
         headers: {
-          authorization: `Bearer ${process.env.NEXT_PUBLIC_PASSWORD}`,
+          authorization: `Bearer ${process.env.PASSWORD}`,
         },
       };
       const response = await axios.get(
