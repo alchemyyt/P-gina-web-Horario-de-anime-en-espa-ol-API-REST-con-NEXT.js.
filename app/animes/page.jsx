@@ -11,7 +11,7 @@ export default function Page() {
     const fetchData = async () => {
       const header = {
         headers: {
-          authorization: `Bearer ${process.env.PASSWORD}`,
+          authorization: `Bearer ${process.env.NEXT_PUBLIC_PASSWORD}`,
         },
       };
       const response = await axios.get(
@@ -30,7 +30,7 @@ export default function Page() {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
+  console.log(currentItems);
   // Componentes para mostrar los datos y la paginación
   return (
     <main>
