@@ -5,7 +5,7 @@ export default async function Page({ params }) {
   const { id } = params;
   const animeData = await getData(`es/animes/${id}`);
   return (
-    <main className="flex flex-col aling-center text-center min-h-screen lg:w-11/12 lg:mx-auto  lg:px-6">
+    <main className="flex flex-col items-center text-center min-h-screen lg:w-11/12 lg:mx-auto  lg:px-6">
       <h2 className="text-2xl font-bold">{animeData.titles.esTitle}</h2>
       <img
         src={animeData.images.horizontalImage}
