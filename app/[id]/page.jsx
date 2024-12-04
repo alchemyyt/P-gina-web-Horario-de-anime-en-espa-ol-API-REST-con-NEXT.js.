@@ -63,7 +63,7 @@ export default async function Page({ params }) {
               alt="el-salvador-flag-icon"
               className="w-6 m-1 inline"
             />
-            {` / ${animeData.broadcast.co}`}
+            {` / ${animeData.broadcast.mx}`}
           </li>
           <li>
             <img
