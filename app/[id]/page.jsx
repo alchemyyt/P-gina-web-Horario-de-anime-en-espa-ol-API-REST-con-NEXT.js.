@@ -209,7 +209,7 @@ export default async function Page({ params }) {
             Estudio
           </h2>
           <Link
-            href={`./${animeData.studio}`}
+            href={`./estudios/${animeData.studio}`}
             className="text-amber-500 hover:text-amber-700 scale-100 transition-all duration-300 hover:scale-105"
           >
             <p>{animeData.studio}</p>
