@@ -9,7 +9,7 @@ export default async function page({ params }) {
   );
   return (
     <main>
-      <h2 className="text-center font-bold text-2xl  ">Verano 2024</h2>
+      <h2 className="text-center font-bold text-2xl  ">{`${palabras[0]}-${palabras[1]}`}</h2>
       <ul className=" flex flex-wrap justify-center gap-1  bg-slate-100 h-min">
         {seasonData.map((element) => (
           <Link
