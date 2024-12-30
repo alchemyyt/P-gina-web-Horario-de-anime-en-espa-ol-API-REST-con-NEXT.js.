@@ -1,8 +1,12 @@
 import React from "react";
 import { getData } from "../../services/getData";
 import Link from "next/link";
-export default async function page() {
-  const seasonData = await getData("es/animes/seasons/summer?year=2024");
+export default async function page({ params }) {
+  const { season } = params;
+  let palabras = season.split("-");
+  const seasonData = await getData(
+    `es/animes/seasons/${palabras[0]}?year=${palabras[1]}`
+  );
   return (
     <main>
       <h2 className="text-center font-bold text-2xl  ">Verano 2024</h2>
