@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <meta name="google-adsense-account" content="ca-pub-1680603531729114">
+      <meta name="google-adsense-account" content="ca-pub-1680603531729114"></meta>
       <body className={`${inter.className} `}>
         <div className=''>
           <NavegationMobile/>
