@@ -1,4 +1,5 @@
 import './globals.css';
+import Script from 'next/script'
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Toaster } from 'sonner';
@@ -20,6 +21,8 @@ export default function RootLayout({
     <html lang="es">
       <meta name="google-adsense-account" content="ca-pub-1680603531729114"></meta>
       <body className={`${inter.className} `}>
+      <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1680603531729114"
+     crossOrigin="anonymous"></Script>
         <div className=''>
           <NavegationMobile/>
           <NavegationDesktop/>
