@@ -20,6 +20,14 @@ export default function RootLayout({
   return (
     <html lang="es">
       <meta name="google-adsense-account" content="ca-pub-1680603531729114"></meta>
+      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-6P1N0FGVEM"></Script>
+<Script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6P1N0FGVEM');
+</Script>
       <body className={`${inter.className} `}>
       <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1680603531729114"
      crossOrigin="anonymous"></Script>
