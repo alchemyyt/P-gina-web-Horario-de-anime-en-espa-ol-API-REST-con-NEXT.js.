@@ -4,9 +4,34 @@ import { getData } from "../services/getData";
 export default async function Page({ params }) {
   const { id } = params;
   const animeData = await getData(`es/animes/${id}`);
+  function translateDayToSpanish(dayInEnglish) {
+    const days = {
+      monday: "Lunes",
+      tuesday: "Martes",
+      wednesday: "Miércoles",
+      thursday: "Jueves",
+      friday: "Viernes",
+      saturday: "Sábados",
+      sunday: "Domingos",
+    };
+
+    return days[dayInEnglish] || dayInEnglish; // Si no encuentra el día, devuelve el nombre original.
+  }
   return (
     <main className="flex flex-col items-center text-center min-h-screen lg:w-11/12 lg:mx-auto  lg:px-6">
       <h1 className="text-2xl font-bold">{animeData.titles.esTitle}</h1>
+      <p className="">
+        ¿Eres fanático del anime? 🎬 Si es así, ¡no te puedes perder{" "}
+        <strong>{animeData.titles.enTitle}</strong> (
+        <em>{animeData.titles.originalTitle}</em>)! Este anime, producido por el
+        renombrado estudio <strong>{animeData.studio}</strong>, te llevará a un
+        mundo de emoción y aventuras. 🌟 Con géneros como{" "}
+        <strong>{animeData.genres.join(", ")}</strong>,{" "}
+        <strong>{animeData.titles.enTitle}</strong> es perfecto para quienes
+        disfrutan del anime. Además, se estrena todos los{" "}
+        <strong>{translateDayToSpanish(animeData.broadcast.day)} </strong>
+        incluyendo <strong>Mexico, Argentina y Colombia</strong>. 🌎
+      </p>
       <img
         title="bandera de   "
         src={animeData.images.horizontalImage}
@@ -25,7 +50,7 @@ export default async function Page({ params }) {
               className=""
               title="Donde ver"
             >
-              <li className="text-amber-500 hover:text-amber-700 scale-100 transition-all duration-300 hover:scale-105">
+              <li className="text-amber-800 hover:text-amber-500 scale-100 transition-all duration-300 hover:scale-105">
                 {animeData.streamingService.siteName}
               </li>
             </Link>
@@ -178,7 +203,7 @@ export default async function Page({ params }) {
             <span className="font-bold">Temporada</span>:
             <Link
               href={`./temporadas/${animeData.season}-${animeData.year}`}
-              className="text-amber-500 hover:text-amber-700 scale-100 transition-all duration-300 hover:scale-105"
+              className="text-amber-800 hover:text-amber-500 scale-100 transition-all duration-300 hover:scale-105"
               title={` ${animeData.season} ${animeData.year}`}
             >
               {` ${animeData.season} ${animeData.year}`}
@@ -190,7 +215,7 @@ export default async function Page({ params }) {
           </li>
           <li className="text-center">
             <span className="font-bold">Dia de estreno: </span>
-            {animeData.broadcast.day}
+            {translateDayToSpanish(animeData.broadcast.day)}
           </li>
         </ul>
         <ul className="mt-6 lg:m-0">
@@ -222,7 +247,7 @@ export default async function Page({ params }) {
             <li key={element._id}>
               <Link
                 href={`./generos/${element}`}
-                className="text-amber-500 hover:text-amber-700 scale-100 transition-all duration-300 hover:scale-105"
+                className="text-amber-800 hover:text-amber-500 scale-100 transition-all duration-300 hover:scale-105"
                 title={element}
               >
                 {element}
@@ -236,7 +261,7 @@ export default async function Page({ params }) {
           </h2>
           <Link
             href={`./estudios/${animeData.studio}`}
-            className="text-amber-500 hover:text-amber-700 scale-100 transition-all duration-300 hover:scale-105"
+            className="text-amber-800 hover:text-amber-500 scale-100 transition-all duration-300 hover:scale-105"
             title={animeData.studio}
           >
             <p>{animeData.studio}</p>
@@ -253,7 +278,7 @@ export default async function Page({ params }) {
                 {element.character}:
                 <Link
                   href={element.wikiUrl}
-                  className="text-amber-500 hover:text-amber-700 scale-100 transition-all duration-300 hover:scale-105"
+                  className="text-amber-800 hover:text-amber-500 scale-100 transition-all duration-300 hover:scale-105"
                   key={element._id}
                   title={` ${element.voiceActorName} `}
                 >
@@ -264,7 +289,7 @@ export default async function Page({ params }) {
             <li>
               <Link
                 href={animeData.doblajeWikiUrl}
-                className="text-amber-500 hover:text-amber-700 scale-100 transition-all duration-300 hover:scale-105"
+                className="text-amber-800 hover:text-amber-500 scale-100 transition-all duration-300 hover:scale-105"
                 title="Wiki link"
               >
                 <p>Wiki</p>
@@ -273,6 +298,21 @@ export default async function Page({ params }) {
           </ul>
         </section>
       </div>
+      <p className="mt-6">
+        ¡Y ahí lo tienes! Si te apasiona el anime tanto como a nosotros, no
+        dudes en seguir disfrutando de{" "}
+        <strong>{animeData.titles.enTitle}</strong> (
+        <em>{animeData.titles.originalTitle}</em>) y sumergirte en su
+        emocionante mundo lleno de acción, personajes inolvidables y giros
+        inesperados. 🎥 Con la producción del talentoso estudio{" "}
+        <strong>{animeData.studio}</strong>, este anime no solo te atrapará,
+        sino que te dejará con ganas de más. 🌠 No olvides que puedes verlo
+        todos los{" "}
+        <strong>{translateDayToSpanish(animeData.broadcast.day)}</strong>, ¡y
+        está disponible en países como{" "}
+        <strong>Mexico, Argentina y Colombia</strong>! 🌍 ¡Nos vemos la próxima
+        semana con más aventuras! 👋
+      </p>
     </main>
   );
 }

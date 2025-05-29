@@ -8,7 +8,7 @@ import NavegationDesktop from "./components/NavegationDesktop";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Horario de Anime en Español: Fechas y Plataformas de Estreno",
+  title: "Horario de Anime en Español : Fechas y Plataformas de Estreno",
   description:
     "Consulta los horarios de anime en español latino 📅✨ ¡Descubre cuándo y en qué plataformas (Crunchyroll, Netflix, Prime Video y más) podrás ver tus animes favoritos! 🚀 Mantente al día con los estrenos de esta temporada 🖥️🎬",
   icons: { icon: "https://i.imghippo.com/files/xnl9671ltI.png" },

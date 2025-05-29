@@ -17,6 +17,15 @@ export default async function Page({ searchParams }) {
         Horario de anime en español{" "}
         <span className="text-amber-900 text-3xl">Todos Animes</span>
       </h1>
+      <p className="text-center mx-4">
+        ¡Bienvenido a la lista completa de{" "}
+        <strong>animes en español latino</strong>! 😍 Aquí encontrarás todos los
+        títulos más populares de la temporada disponibles en plataformas como{" "}
+        <em>Crunchyroll</em>, <em>Netflix</em>, <em>Funimation</em> y más. 📅✨
+        Navega por nuestras páginas, donde podrás consultar los animes paginados
+        de 10 en 10, para que nunca te pierdas los estrenos más esperados. ¡Haz
+        que tu experiencia de maratón de anime sea más fácil que nunca! 🎬🍿
+      </p>
       <div>
         {/* Mostrar los animes */}
         <ul className="flex flex-wrap items-center justify-center">
@@ -90,6 +99,15 @@ export default async function Page({ searchParams }) {
           )}
         </div>
       </div>
+      <p className="text-center mx-4">
+        ¡Gracias por explorar nuestra colección de animes! 🎉 Si estás buscando
+        más episodios o quieres descubrir nuevos títulos, no dudes en seguir
+        navegando por nuestras páginas. ¡Recuerda que siempre actualizamos la
+        lista con los últimos estrenos de anime en español latino! 🔥 Nos
+        encantaría saber tu opinión, así que si tienes alguna sugerencia o duda,
+        ¡contáctanos! 👋 Hasta la próxima, ¡y que disfrutes del maratón de
+        anime! 🚀🍥
+      </p>
       <h2>Pagina numero {currentPage}</h2>
     </main>
   );

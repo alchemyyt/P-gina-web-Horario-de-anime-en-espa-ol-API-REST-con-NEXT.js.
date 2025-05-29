@@ -4,9 +4,16 @@ export default function Menu() {
   return (
     <nav className="flex flex-col lg:flex-row ">
       <Link
-        href="/animes"
+        href="/"
         className="lg:ml-6 text-xl font-bold hover:text-amber-950 duration-300 "
         title="Seccion de todos los animes"
+      >
+        Inicio
+      </Link>
+      <Link
+        href="/animes"
+        className="lg:ml-6 text-xl font-bold hover:text-amber-950 duration-300 "
+        title="Ir al inicio"
       >
         Animes
       </Link>

@@ -10,6 +10,20 @@ export default async function Page() {
         Horario de anime en español{" "}
         <span className="text-amber-900 text-3xl">Temporadas</span>
       </h1>
+      <p>
+        ¡Bienvenido a la sección de <strong>animes en español latino</strong>{" "}
+        organizados por <strong>temporada y año</strong>! 🎬📅 Si eres un
+        verdadero fanático del anime, aquí encontrarás todos los títulos más
+        destacados de cada temporada, desde los últimos lanzamientos hasta los
+        clásicos que siguen siendo populares. ¡Explora por temporada, por año, y
+        encuentra todos los estrenos y episodios disponibles en plataformas como{" "}
+        <em>Crunchyroll</em>, <em>Netflix</em>, <em>Funimation</em>, y más! 🌟🚀
+        Con nuestra organización por <strong>temporada</strong> y{" "}
+        <strong>año</strong>, podrás estar al tanto de cada estreno sin perderte
+        ni un solo episodio. ¡Haz de tu maratón de anime una experiencia
+        perfecta! 🍿✨
+      </p>
+
       <ul className=" flex flex-wrap justify-center gap-1  bg-slate-100 h-min">
         {seasonsNames.map((element) => (
           <Link
@@ -24,6 +38,15 @@ export default async function Page() {
           </Link>
         ))}
       </ul>
+      <p>
+        ¡Gracias por explorar nuestra colección de animes organizados por
+        temporada y año! 😄🍥 Si estás buscando los estrenos más recientes o
+        quieres revivir los grandes éxitos del pasado, sigue navegando por
+        nuestras categorías. ¡Siempre estamos actualizando la lista con los
+        animes más esperados en español latino! 🎉 No olvides dejarnos tus
+        comentarios y sugerencias, ¡nos encantaría saber qué piensas! 💬👋 Hasta
+        pronto, ¡y que disfrutes al máximo de tus animes favoritos! 🚀🍿
+      </p>
     </main>
   );
 }

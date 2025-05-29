@@ -7,9 +7,23 @@ export default async function page({ params }) {
   const seasonData = await getData(
     `es/animes/seasons/${palabras[0]}?year=${palabras[1]}`
   );
+  let seasonName = palabras[0];
+  let year = palabras[1];
   return (
     <main>
-      <h1 className="text-center font-bold text-2xl  ">{`${palabras[0]}-${palabras[1]}`}</h1>
+      <h1 className="text-center font-bold text-2xl  ">{`${seasonName}-${year}`}</h1>
+      <p className="text-center mx-4">
+        ¡Bienvenido a nuestra página de{" "}
+        <strong>
+          animes en español latino de la temporada {seasonName} {year}
+        </strong>
+        ! 📅🎬 Si eres fanático de los estrenos de anime y te gustaría saber qué
+        títulos se están emitiendo en esta temporada, ¡has llegado al lugar
+        adecuado! Aquí encontrarás una lista organizada de los mejores animes de
+        la temporada {seasonName}, del año {year}. 🌸🍂 ¿Buscas los últimos
+        estrenos de {seasonName}? ¡Tenemos todos los detalles para que no te
+        pierdas nada! 🚀🍿
+      </p>
       <ul className=" flex flex-wrap justify-center gap-1  bg-slate-100 h-min">
         {seasonData.map((element) => (
           <Link
@@ -35,6 +49,18 @@ export default async function page({ params }) {
           </Link>
         ))}
       </ul>
+      <p className="text-center mx-4">
+        ¡Gracias por visitar nuestra página de{" "}
+        <strong>
+          animes en español latino de la temporada {seasonName} {year}
+        </strong>
+        ! 😄🎉 Mantente al tanto de los últimos estrenos de anime de esta
+        temporada. Si encontraste algún anime que te gustaría ver o tienes
+        alguna recomendación, ¡no dudes en seguir explorando nuestra página para
+        más contenido actualizado! 📅💥 ¡Nos encantaría saber tu opinión! 🎬👋
+        ¡Hasta la próxima, y que disfrutes de tu maratón de anime! 🍿🔥
+      </p>
+      s
     </main>
   );
 }
