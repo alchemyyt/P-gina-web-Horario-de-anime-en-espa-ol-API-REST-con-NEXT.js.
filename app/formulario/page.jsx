@@ -1,7 +1,10 @@
 "use client";
 import { createAnime } from "../../actions/anime-actions";
 import { toast } from "sonner";
+import VoiceActorsForm from "../components/VoiceActorsForm";
+import { useState } from "react";
 const page = () => {
+  const [voiceActors, setVoiceActors] = useState([]);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <h1 className="p-6 text-center bg-amber-200 border-amber-600 border-2">
@@ -155,13 +158,7 @@ const page = () => {
         </label>
         <label className="">
           <div className="">Actores de voz</div>
-          <input
-            type="text"
-            name="voiceActors"
-            placeholder="actores de voz"
-            className="w-full h-24"
-            defaultValue={`[{ "voiceActorName": "nombre", "wikiUrl": "url", "character":"personaje" },{ "voiceActorName": "nomnre", "wikiUrl": "url", "character":"personaje" },{ "voiceActorName": "nomnre", "wikiUrl": "url", "character":"personaje" },{ "voiceActorName": "nomnre", "wikiUrl": "url", "character":"personaje" }]`}
-          />
+          <VoiceActorsForm onChange={(actors) => setVoiceActors(actors)} />s
         </label>
         <button>save</button>
       </form>
