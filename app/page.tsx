@@ -2,7 +2,9 @@ import AnimeCard from "./components/AnimeCard";
 export default async function Home() {
   return (
     <main className="flex flex-col ">
-      <h1>Horario de anime en español</h1>
+      <h1 className="font-bold text-2xl mt-6 text-center">
+        Horario de anime en español
+      </h1>
       <div className="lg:flex lg:flex-row overflow-x-scroll lg:w-min lg:m-auto">
         <AnimeCard endPoint="es/schedule/monday" title="Lunes" />
         <AnimeCard endPoint="es/schedule/tuesday" title="Martes" />

@@ -15,7 +15,7 @@ export default function Page() {
         },
       };
       const response = await axios.get(
-        `https://horario-de-anime-en-castellano.vercel.app/api/v1/es/animes?page=${currentPage}`,
+        `https://horario-de-anime-en-espanol.lat/api/v1/es/animes?page=${currentPage}`,
         header
       );
       setData(response.data.Animes);

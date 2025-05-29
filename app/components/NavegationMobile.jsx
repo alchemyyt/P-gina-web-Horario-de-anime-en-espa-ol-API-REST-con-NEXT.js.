@@ -21,9 +21,12 @@ export default function NavegationMobile() {
           onClick={() => router.back()}
         />
         <img
-          src="https://drive.usercontent.google.com/download?id=1bucpCkjp13062kQkYABu-2qCzvynSYuS&authuser=0"
+          src="https://i.imghippo.com/files/OQWl1182bMs.png"
           alt="logo horario-de-anime-en-español.lat"
-        />
+          title="Logo de horario-de-anime-en-español.lat"
+          border="0"
+          className="h-20 absolute inset-x-1/3"
+        ></img>
         <FiMenu
           className="h-7 w-7  text-black cursor-pointer"
           onClick={handleClickMenu}

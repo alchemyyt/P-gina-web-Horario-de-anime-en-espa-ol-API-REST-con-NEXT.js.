@@ -14,6 +14,7 @@ export default async function AnimeCard(props) {
             key={element._id}
             href={element._id}
             className=" relative rounded-lg m-2"
+            title={element.titles.esTitle}
           >
             <figure
               key={element._id}
@@ -23,6 +24,7 @@ export default async function AnimeCard(props) {
                 className=" transition-all duration-300 hover:brightness-50 rounded-lg"
                 src={element.images.verticalImage}
                 alt={element.titles.esTitle}
+                title={element.titles.esTitle}
               />
             </figure>
             <figcaption className=" absolute bottom-0 overflow-hidden font-bold text-center text-amber-500 m-1  hover:text-amber-700 scale-100 transition-all duration-300 hover:scale-105 w-full ">
