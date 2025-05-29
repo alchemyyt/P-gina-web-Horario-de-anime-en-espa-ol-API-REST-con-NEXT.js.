@@ -9,13 +9,14 @@ export default async function page({ params }) {
   );
   return (
     <main>
-      <h2 className="text-center font-bold text-2xl  ">{`${palabras[0]}-${palabras[1]}`}</h2>
+      <h1 className="text-center font-bold text-2xl  ">{`${palabras[0]}-${palabras[1]}`}</h1>
       <ul className=" flex flex-wrap justify-center gap-1  bg-slate-100 h-min">
         {seasonData.map((element) => (
           <Link
             key={element._id}
             href={`../${element._id}`}
             className=" relative rounded-lg m-2"
+            title={element.titles.esTitle}
           >
             <figure
               key={element._id}
@@ -25,10 +26,11 @@ export default async function page({ params }) {
                 className=" transition-all duration-300 hover:brightness-50 rounded-lg"
                 src={element.images.verticalImage}
                 alt={element.titles.esTitle}
+                title={element.titles.esTitle}
               />
             </figure>
             <figcaption className=" absolute bottom-0 overflow-hidden font-bold text-center text-amber-500 m-1  hover:text-amber-700 scale-100 transition-all duration-300 hover:scale-105 w-full ">
-              {element.titles.esTitle}
+              <h2>{element.titles.esTitle}</h2>
             </figcaption>
           </Link>
         ))}

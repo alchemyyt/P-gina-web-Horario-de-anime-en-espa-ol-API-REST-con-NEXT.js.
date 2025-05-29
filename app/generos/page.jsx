@@ -24,16 +24,20 @@ export default function page() {
   ];
   return (
     <main className="flex flex-col aling-center text-center min-h-screen lg:w-11/12 lg:mx-auto  lg:px-6">
-      <h2 className="text-2xl font-bold">Generos</h2>
+      <h1 className="font-bold text-2xl mt-6 text-center">
+        Horario de anime en español{" "}
+        <span className="text-amber-900 text-3xl">Generos</span>
+      </h1>
       <ul className=" flex flex-wrap justify-center gap-1  bg-slate-100 h-min">
         {genresNames.map((element) => (
           <Link
             key={element}
             href={`./generos/${element}`}
             className=" relative rounded-lg m-2"
+            title={element}
           >
             <li className="font-bold text-center text-amber-500 m-1  hover:text-amber-700 scale-100 transition-all duration-300 hover:scale-105">
-              {element}
+              <h2>{element}</h2>
             </li>
           </Link>
         ))}

@@ -1,99 +1,96 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+// app/animes/page.jsx
+import React from "react";
+import { getData } from "../services/getData";
 import Link from "next/link";
-export default function Page() {
-  const [totalPages, setTotalPages] = useState([]);
-  const [data, setData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const header = {
-        headers: {
-          authorization: `Bearer ${process.env.NEXT_PUBLIC_PASSWORD}`,
-        },
-      };
-      const response = await axios.get(
-        `https://horario-de-anime-en-espanol.lat/api/v1/es/animes?page=${currentPage}`,
-        header
-      );
-      setData(response.data.Animes);
-      setTotalPages(response.data.totalPages);
-    };
-    fetchData();
-  }, [currentPage]);
+// Componente principal de la página que obtiene los datos
+export default async function Page({ searchParams }) {
+  // Obtenemos el número de página desde los parámetros de la URL (por defecto es 1)
+  const currentPage = searchParams.page || 1;
 
-  // Lógica para calcular el índice inicial y final de los elementos a mostrar
-  const currentItems = data;
-  // Función para cambiar de página
-  const paginate = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-  console.log(currentItems);
-  // Componentes para mostrar los datos y la paginación
+  // Realizamos la solicitud de datos con la página actual
+  const animesData = await getData(`es/animes?page=${currentPage}`);
+
   return (
     <main>
+      <h1 className="font-bold text-2xl mt-6 text-center">
+        Horario de anime en español{" "}
+        <span className="text-amber-900 text-3xl">Todos Animes</span>
+      </h1>
       <div>
-        <ul className=" flex  flex-wrap  items-center justify-center ">
-          {currentItems.map((element) => (
+        {/* Mostrar los animes */}
+        <ul className="flex flex-wrap items-center justify-center">
+          {animesData.Animes.map((element) => (
             <Link
               key={element._id}
               href={element._id}
-              className=" relative rounded-lg m-2"
+              className="relative rounded-lg m-2"
+              title={element.titles.esTitle}
             >
               <figure
                 key={element._id}
-                className=" w-60 h-82 overflow-hidden rounded-lg"
+                className="w-60 h-82 overflow-hidden rounded-lg"
               >
                 <img
-                  className=" transition-all duration-300 hover:brightness-50 rounded-lg"
+                  className="transition-all duration-300 hover:brightness-50 rounded-lg"
                   src={element.images.verticalImage}
                   alt={element.titles.esTitle}
+                  title={element.titles.esTitle}
                 />
               </figure>
-              <figcaption className=" absolute bottom-0 overflow-hidden font-bold text-center text-amber-500 m-1  hover:text-amber-700 scale-100 transition-all duration-300 hover:scale-105 w-full ">
-                {element.titles.esTitle}
+              <figcaption className="absolute bottom-0 overflow-hidden font-bold text-center text-amber-500 m-1 hover:text-amber-700 scale-100 transition-all duration-300 hover:scale-105 w-full">
+                <h3>{element.titles.esTitle}</h3>
               </figcaption>
             </Link>
           ))}
         </ul>
+
+        {/* Paginación */}
         <div className="flex justify-center mt-4">
+          {/* Botón de "Anterior" */}
           {currentPage > 1 && (
-            <button
-              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l-md"
-              onClick={() => paginate(currentPage - 1)}
+            <Link
+              href={`?page=${parseInt(currentPage) - 1}`}
+              title="anterior pagina"
             >
-              Previous
-            </button>
+              <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l-md">
+                Anterior
+              </button>
+            </Link>
           )}
 
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+          {/* Botones de las páginas */}
+          {Array.from({ length: animesData.totalPages }, (_, i) => i + 1).map(
             (pageNumber) => (
-              <button
-                key={pageNumber}
-                className={`
-                  bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded md:rounded-none ${
-                    currentPage === pageNumber ? "bg-blue-500 text-white" : ""
-                  }
-                `}
-                onClick={() => paginate(pageNumber)}
-              >
-                {pageNumber}
-              </button>
+              <Link key={pageNumber} href={`?page=${pageNumber}`}>
+                <button
+                  disabled={currentPage === pageNumber}
+                  className={`bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded md:rounded-none ${
+                    currentPage === pageNumber
+                      ? "bg-gray-500 text-white cursor-not-allowed opacity-50" // Cambiar opacidad cuando está deshabilitado
+                      : ""
+                  }`}
+                >
+                  {pageNumber}
+                </button>
+              </Link>
             )
           )}
 
-          {currentPage < totalPages && (
-            <button
-              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r-md"
-              onClick={() => paginate(currentPage + 1)}
+          {/* Botón de "Siguiente" */}
+          {currentPage < animesData.totalPages && (
+            <Link
+              href={`?page=${parseInt(currentPage) + 1}`}
+              title="siguiente pagina"
             >
-              Next
-            </button>
+              <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r-md">
+                Siguiente
+              </button>
+            </Link>
           )}
         </div>
       </div>
+      <h2>Pagina numero {currentPage}</h2>
     </main>
   );
 }
