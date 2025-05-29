@@ -13,7 +13,7 @@ export const createAnime = async (formData) => {
   const genres = formData.get("genres");
   const voiceActors = formData.get("voiceActors");
   const password = formData.get("password");
-
+  const domain = process.env.DOMAIN;
   if (airing === "on") {
     airing = true;
   } else {
@@ -59,7 +59,7 @@ export const createAnime = async (formData) => {
   };
   try {
     const response = await axios.post(
-        `https://horario-de-anime-en-castellano.vercel.app/api/v1/es/animes`,
+      `${domain}/api/v1/es/animes`,
       newAnime,
       postHeader
     );

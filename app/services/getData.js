@@ -1,4 +1,6 @@
 import axios from "axios";
+const domain = process.env.DOMAIN;
+
 export const getData = async (endpoint) => {
   try {
     const postHeader = {
@@ -7,7 +9,7 @@ export const getData = async (endpoint) => {
       },
     };
     const response = await axios.get(
-      `https://horario-de-anime-en-espanol.lat/api/v1/${endpoint}`,
+      `${domain}/api/v1/${endpoint}`,
       postHeader
     );
     return response.data; // para poder retornar directo tuve que hacer un try catch con .then no retornaba
