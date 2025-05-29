@@ -3,7 +3,7 @@ import { createAnime } from "../../actions/anime-actions";
 import { toast } from "sonner";
 import VoiceActorsForm from "../components/VoiceActorsForm";
 import { useState } from "react";
-const page = () => {
+const Page = () => {
   const [voiceActors, setVoiceActors] = useState([]);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
