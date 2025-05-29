@@ -20,9 +20,10 @@ export default function NavegationMobile() {
           className="h-7 w-7  text-black cursor-pointer"
           onClick={() => router.back()}
         />
-        <Link href="/">
-          <h1 className="text-xl font-bold">HorarioAnime</h1>
-        </Link>
+        <img
+          src="https://drive.usercontent.google.com/download?id=1bucpCkjp13062kQkYABu-2qCzvynSYuS&authuser=0"
+          alt="logo horario-de-anime-en-español.lat"
+        />
         <FiMenu
           className="h-7 w-7  text-black cursor-pointer"
           onClick={handleClickMenu}
