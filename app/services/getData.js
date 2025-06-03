@@ -1,5 +1,5 @@
 import axios from "axios";
-const domain = process.env.DOMAIN;
+const domain = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export const getData = async (endpoint) => {
   try {

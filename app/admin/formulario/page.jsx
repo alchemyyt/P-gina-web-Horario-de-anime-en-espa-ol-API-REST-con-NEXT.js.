@@ -1,8 +1,9 @@
 "use client";
-import { createAnime } from "../../actions/anime-actions";
+import { createAnime } from "../../../actions/anime-actions";
 import { toast } from "sonner";
-import VoiceActorsForm from "../components/VoiceActorsForm";
+import VoiceActorsForm from "../../components/VoiceActorsForm";
 import { useState } from "react";
+import Link from "next/link";
 const Page = () => {
   const [voiceActors, setVoiceActors] = useState([]);
   return (
@@ -13,21 +14,24 @@ const Page = () => {
       <form
         action={async (formData) => {
           try {
-            const status = await createAnime(formData); //esto ejecuata la funcion osea crea el anime y agarra lo que retorna en este caso el estatus
-            if (status === 200) {
-              toast.success("Anime created successfully status:" + status);
+            const result = await createAnime(formData);
+
+            if (result.status === 200) {
+              toast.success(
+                `Anime creado exitosamente: ${result.data.message}`
+              );
             } else {
-              console.error("Error creating anime:", status);
+              toast.error(
+                `Error al crear anime: ${result.error || "Error desconocido"}`
+              );
+              console.error("Error creating anime:", result);
             }
           } catch (error) {
+            toast.error("Error inesperado al procesar la solicitud");
             console.error("Error:", error);
           }
         }}
       >
-        <label className="">
-          <div className="">Contraseña</div>
-          <input type="text" name="password" placeholder="Password" />
-        </label>
         <label className="">
           <div className="">Imagenes</div>
           <input
@@ -158,7 +162,7 @@ const Page = () => {
         </label>
         <label className="">
           <div className="">Actores de voz</div>
-          <VoiceActorsForm onChange={(actors) => setVoiceActors(actors)} />s
+          <VoiceActorsForm onChange={(actors) => setVoiceActors(actors)} />
         </label>
         <button>save</button>
       </form>
