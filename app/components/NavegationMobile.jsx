@@ -15,20 +15,21 @@ export default function NavegationMobile() {
   };
   return (
     <div>
-      <header className="  flex lg:hidden  items-center justify-between border-2 shadow-xl shadow-amber-200 border-amber-600 p-4 bg-amber-400 ">
+      <header className="  flex lg:hidden  items-center justify-between border-2 shadow-xl shadow-amber-200 border-amber-600  bg-amber-400 px-4">
         <IoIosArrowBack
-          className="h-7 w-7  text-black cursor-pointer"
+          className=" h-10 w-10  text-black cursor-pointer"
           onClick={() => router.back()}
         />
-        <img
-          src="https://i.imghippo.com/files/OQWl1182bMs.png"
-          alt="logo horario-de-anime-en-español.lat"
-          title="Logo de horario-de-anime-en-español.lat"
-          border="0"
-          className="h-20 absolute inset-x-1/3"
-        ></img>
+        <Link href="/" title="Ir al inicio">
+          <img
+            src="https://i.imghippo.com/files/SIoJ6042pyc.png"
+            alt="logo horario-de-anime-en-español.lat"
+            title="Logo de horario-de-anime-en-español.lat"
+            border="0"
+          ></img>
+        </Link>
         <FiMenu
-          className="h-7 w-7  text-black cursor-pointer"
+          className="h-10 w-10  text-black cursor-pointer"
           onClick={handleClickMenu}
         />
       </header>

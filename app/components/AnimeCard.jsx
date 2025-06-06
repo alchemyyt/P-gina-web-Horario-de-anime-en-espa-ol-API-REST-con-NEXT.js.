@@ -25,6 +25,8 @@ export default async function AnimeCard(props) {
                 src={element.images.verticalImage}
                 alt={element.titles.esTitle}
                 title={element.titles.esTitle}
+                width={240}
+                height={336}
               />
             </figure>
             <figcaption className=" absolute bottom-0 overflow-hidden font-bold text-center text-amber-500 m-1  hover:text-amber-700 scale-100 transition-all duration-300 hover:scale-105 w-full ">
