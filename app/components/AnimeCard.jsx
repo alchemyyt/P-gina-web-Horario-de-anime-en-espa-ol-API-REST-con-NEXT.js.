@@ -27,6 +27,7 @@ export default async function AnimeCard(props) {
                 title={element.titles.esTitle}
                 width={216}
                 height={302}
+                loading="lazy"
               />
             </figure>
             <figcaption className=" absolute bottom-0 overflow-hidden font-bold text-center text-black bg-white/30 font-bold p-1 hover:text-amber-700 scale-100 transition-all duration-300 hover:scale-105 w-full ">
