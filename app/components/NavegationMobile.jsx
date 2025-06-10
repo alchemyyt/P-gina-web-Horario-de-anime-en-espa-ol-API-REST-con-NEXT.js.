@@ -22,7 +22,7 @@ export default function NavegationMobile() {
         />
         <Link href="/" title="Ir al inicio">
           <img
-            src="https://i.imghippo.com/files/SIoJ6042pyc.png"
+            src="https://alchemy.sirv.com/3.png"
             alt="logo horario-de-anime-en-español.lat"
             title="Logo de horario-de-anime-en-español.lat"
             border="0"

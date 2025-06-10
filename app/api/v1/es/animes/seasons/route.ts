@@ -6,6 +6,7 @@ export const GET = async (request: Request, context: { params: any }) => {
     const seasonsNames = [
       { season: "summer", year: "2024" },
       { season: "winter", year: "2024" },
+      { season: "spring", year: "2025" },
     ];
     return new NextResponse(JSON.stringify(seasonsNames), { status: 200 });
   } catch (error: any) {

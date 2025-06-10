@@ -8,7 +8,7 @@ export default function NavegationDesktop() {
     <header className=" hidden lg:flex items-center justify-between content-center w-full shadow-xl shadow-amber-200 border-2 border-amber-600 bg-amber-400">
       <Link href="/" className="font-bold text-2xl pl-2" title="Ir al inicio">
         <img
-          src="https://i.imghippo.com/files/SIoJ6042pyc.png"
+          src="https://alchemy.sirv.com/3.png"
           alt="logo horario-de-anime-en-español.lat"
           title="Logo de horario-de-anime-en-español.lat"
           border="0"

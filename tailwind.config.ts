@@ -16,6 +16,9 @@ const config: Config = {
       height: {
         "82": "21.18rem",
       },
+      width: {
+        "56": "13.5rem",
+      },
       maxWidth: {
         full: "100vw",
       },
