@@ -3,6 +3,16 @@ import React from "react";
 import { getData } from "../services/getData";
 
 export default async function Page() {
+  function translateSeasonToSpanish(seasonInEnglish) {
+    const seasons = {
+      winter: "Invierno",
+      summer: "Verano",
+      spring: "Primavera",
+      fall: "Otoño",
+    };
+
+    return seasons[seasonInEnglish] || seasonInEnglish;
+  }
   const seasonsNames = await getData(`es/animes/seasons`);
   return (
     <main className="flex flex-col aling-center text-center min-h-screen lg:w-11/12 lg:mx-auto  lg:px-6">
@@ -30,10 +40,14 @@ export default async function Page() {
             key={element}
             href={`./temporadas/${element.season}-${element.year}`}
             className=" relative rounded-lg m-2"
-            title={`${element.season}-${element.year}`}
+            title={`${translateSeasonToSpanish(element.season)}-${
+              element.year
+            }`}
           >
             <li className="font-bold text-center text-amber-500 m-1  hover:text-amber-700 scale-100 transition-all duration-300 hover:scale-105">
-              <h2>{`${element.season}-${element.year}`}</h2>
+              <h2>{`${translateSeasonToSpanish(element.season)}-${
+                element.year
+              }`}</h2>
             </li>
           </Link>
         ))}
